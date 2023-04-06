@@ -31,8 +31,15 @@ export async function getServerSideProps(context: unknown) {
   const endT1 = new Date().valueOf()
 
   await StatsigNode.initialize(process.env.STATSIG_SERVER_API_KEY!, {
+    api: 'junk.com',
     dataAdapter,
   })
+
+  const bucket = (
+    await StatsigNode.getConfig({ userID: '1234' }, 'statsig_example')
+  ).getValue('bucket', 'default')
+
+  console.log(bucket)
 
   const endT2 = new Date().valueOf()
 
@@ -40,6 +47,8 @@ export async function getServerSideProps(context: unknown) {
   console.log(JSON.stringify(endT1 - startT))
   console.log(JSON.stringify(endT2 - endT1))
   console.log('end')
+
+  StatsigNode.flush()
 
   return {
     props: {}, // will be passed to the page component as props
