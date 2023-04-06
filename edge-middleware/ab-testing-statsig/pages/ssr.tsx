@@ -21,7 +21,7 @@ interface Props {
   bucket: string
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: unknown) {
   const startT = new Date().valueOf()
 
   const dataAdapter = new EdgeConfigDataAdapter(
