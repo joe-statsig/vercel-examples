@@ -40,6 +40,7 @@ export async function getServerSideProps(context) {
   console.log('init')
   console.log(JSON.stringify(endT1 - startT))
   console.log(JSON.stringify(endT2 - endT1))
+  console.log('end')
 
   return {
     props: {}, // will be passed to the page component as props
