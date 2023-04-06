@@ -13,9 +13,8 @@ import {
   Snippet,
   Code,
 } from '@vercel/examples-ui'
-import { EXPERIMENT, UID_COOKIE, GROUP_PARAM_FALLBACK } from '../lib/constants'
+import { UID_COOKIE, GROUP_PARAM_FALLBACK } from '../lib/constants'
 import { EdgeConfigDataAdapter } from 'statsig-node-vercel'
-import api from '../lib/statsig-api'
 import exampleScreenshot from '../public/example_experiment.png'
 
 interface Props {
