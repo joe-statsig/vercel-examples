@@ -37,10 +37,9 @@ class EdgeConfigDataAdapter implements IDataAdapter {
   public async get(key: string): Promise<AdapterResponse> {
     const startT = new Date().valueOf()
     if (key !== 'statsig.cache') {
-      return { result: '' }
-      // return {
-      //   error: new Error(`Edge Config Adapter Only Supports Config Specs`),
-      // }
+      return {
+        error: new Error(`Edge Config Adapter Only Supports Config Specs`),
+      }
     }
 
     const data = await this.edgeConfigClient.get(this.configSpecsKey)
