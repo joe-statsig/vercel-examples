@@ -1,4 +1,3 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import StatsigNode from 'statsig-node'
 import { Statsig } from 'statsig-react'
@@ -63,12 +62,11 @@ class EdgeConfigDataAdapter implements IDataAdapter {
   }
 
   public async initialize(): Promise<void> {
-    const startT = new Date().valueOf()
-
     const data = await this.edgeConfigClient.get(this.configSpecsKey)
+    const allEdgeConfigData = await this.edgeConfigClient.getAll()
 
-    const endT1 = new Date().valueOf()
-    console.log(`edge config init time: ${endT1 - startT}`)
+    console.log(`All Edge Config Data: ${JSON.stringify(allEdgeConfigData)}`)
+
     if (data) {
       this.supportConfigSpecPolling = true
     }
