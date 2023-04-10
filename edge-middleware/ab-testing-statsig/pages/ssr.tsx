@@ -37,9 +37,10 @@ class EdgeConfigDataAdapter implements IDataAdapter {
   public async get(key: string): Promise<AdapterResponse> {
     const startT = new Date().valueOf()
     if (key !== 'statsig.cache') {
-      return {
-        error: new Error(`Edge Config Adapter Only Supports Config Specs`),
-      }
+      return { result: '' }
+      // return {
+      //   error: new Error(`Edge Config Adapter Only Supports Config Specs`),
+      // }
     }
 
     const data = await this.edgeConfigClient.get(this.configSpecsKey)
@@ -61,10 +62,11 @@ class EdgeConfigDataAdapter implements IDataAdapter {
   }
 
   public async initialize(): Promise<void> {
+    const startT = new Date().valueOf()
     const data = await this.edgeConfigClient.get(this.configSpecsKey)
-
+    const endT1 = new Date().valueOf()
+    console.log(`edge config init time: ${endT1 - startT}`)
     if (data) {
-      console.log('Successfully inited edge config')
       this.supportConfigSpecPolling = true
     }
   }
