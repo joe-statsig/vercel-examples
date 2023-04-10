@@ -13,71 +13,11 @@ import {
   Code,
 } from '@vercel/examples-ui'
 import { UID_COOKIE, GROUP_PARAM_FALLBACK } from '../lib/constants'
-import { AdapterResponse, IDataAdapter } from 'statsig-node'
-import { createClient, EdgeConfigClient } from '@vercel/edge-config'
+import { EdgeConfigDataAdapter } from 'statsig-node-vercel'
 import exampleScreenshot from '../public/example_experiment.png'
 
 interface Props {
   bucket: string
-}
-
-class EdgeConfigDataAdapter implements IDataAdapter {
-  private configSpecsKey: string
-  private edgeConfigClient: EdgeConfigClient
-  private supportConfigSpecPolling: boolean = false
-
-  public constructor(
-    key: string,
-    connectionString: string = process.env.EDGE_CONFIG!
-  ) {
-    this.configSpecsKey = key
-    this.edgeConfigClient = createClient(connectionString)
-  }
-
-  public async get(key: string): Promise<AdapterResponse> {
-    const startT = new Date().valueOf()
-    if (key !== 'statsig.cache') {
-      return {
-        error: new Error(`Edge Config Adapter Only Supports Config Specs`),
-      }
-    }
-
-    const data = await this.edgeConfigClient.get(this.configSpecsKey)
-
-    const endT1 = new Date().valueOf()
-    console.log(`edge config read time for ${key}: ${endT1 - startT}`)
-    if (data === undefined) {
-      return { error: new Error(`key (${key}) does not exist`) }
-    }
-    return { result: JSON.stringify(data) }
-  }
-
-  public async set(
-    key: string,
-    value: string,
-    time?: number | undefined
-  ): Promise<void> {
-    // no-op. Statsig's Edge Config integration keeps config specs synced through Statsig's service
-  }
-
-  public async initialize(): Promise<void> {
-    const startT = new Date().valueOf()
-    const data = await this.edgeConfigClient.get(this.configSpecsKey)
-    const endT1 = new Date().valueOf()
-    console.log(`edge config init time: ${endT1 - startT}`)
-    if (data) {
-      this.supportConfigSpecPolling = true
-    }
-  }
-
-  public async shutdown(): Promise<void> {}
-
-  public supportsPollingUpdatesFor(key: string): boolean {
-    if (key === 'statsig.cache') {
-      return this.supportConfigSpecPolling
-    }
-    return false
-  }
 }
 
 export async function getServerSideProps(context: unknown) {
