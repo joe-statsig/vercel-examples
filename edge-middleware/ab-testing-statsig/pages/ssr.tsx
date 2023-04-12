@@ -15,6 +15,7 @@ import {
 import { UID_COOKIE, GROUP_PARAM_FALLBACK } from '../lib/constants'
 import { EdgeConfigDataAdapter } from 'statsig-node-vercel'
 import exampleScreenshot from '../public/example_experiment.png'
+import { InitOption } from 'statsig-node'
 
 interface Props {
   bucket: string
@@ -29,6 +30,8 @@ export async function getServerSideProps(context: unknown) {
 
   await StatsigNode.initialize(process.env.STATSIG_SERVER_API_KEY!, {
     dataAdapter,
+    initIDLists: 'none' as InitOption,
+    initIP3Country: 'none' as InitOption,
   })
 
   const bucket = (
@@ -36,6 +39,11 @@ export async function getServerSideProps(context: unknown) {
   ).getValue('bucket', 'default')
 
   console.log(bucket)
+
+  await StatsigNode.checkGate(
+    { userID: '1234', ip: '75.172.23.47' },
+    'test_gate'
+  )
 
   const endT1 = new Date().valueOf()
 
