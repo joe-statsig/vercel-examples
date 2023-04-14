@@ -30,7 +30,7 @@ export async function getServerSideProps(context: unknown) {
   await StatsigNode.initialize(process.env.STATSIG_SERVER_API_KEY!, {
     dataAdapter,
     initStrategyForIDLists: 'none',
-    initStrategyForIP3Country: 'none',
+    initStrategyForIP3Country: 'lazy',
   })
 
   const bucket = (
