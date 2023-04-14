@@ -14,7 +14,7 @@ specifiers:
   postcss: ^8.4.6
   react: latest
   react-dom: latest
-  statsig-node: ^5.5.0-beta.6
+  statsig-node: ^5.5.0-beta.7
   statsig-node-vercel: ^0.2.0-beta.1
   statsig-react: ^1.12.0
   tailwindcss: ^3.0.18
@@ -27,7 +27,7 @@ dependencies:
   next: 13.3.1-canary.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  statsig-node: 5.5.0-beta.6
+  statsig-node: 5.5.0-beta.7
   statsig-node-vercel: 0.2.0-beta.1
   statsig-react: 1.27.0_react@18.2.0
 
@@ -2305,8 +2305,8 @@ packages:
       - encoding
     dev: false
 
-  /statsig-node/5.5.0-beta.6:
-    resolution: {integrity: sha512-7oM7yuXhc3dhWNhQKnfuBw7/VLbSPc1lmAvuPfDcoz+I0zLG12JcHVqe/jr7uJFi1f4XwEOoix7FWZGB1Jzk2A==}
+  /statsig-node/5.5.0-beta.7:
+    resolution: {integrity: sha512-ymFymjnAXX/puRQk67CUSASu9+Xa8Oat8lnwRXIOMVj1AAciSPdygd0GTthPH0euXx1ib1PQPZHmGAGuyP3KHA==}
     dependencies:
       '@types/node-fetch': 2.6.3
       ip3country: 5.0.0
