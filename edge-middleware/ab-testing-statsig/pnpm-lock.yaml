@@ -14,7 +14,7 @@ specifiers:
   postcss: ^8.4.6
   react: latest
   react-dom: latest
-  statsig-node: ^5.7.1
+  statsig-node: 5.7.2-beta.0
   statsig-node-vercel: ^0.2.0-beta.1
   statsig-react: ^1.12.0
   tailwindcss: ^3.0.18
@@ -27,7 +27,7 @@ dependencies:
   next: 13.4.5-canary.8_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  statsig-node: 5.7.1
+  statsig-node: 5.7.2-beta.0
   statsig-node-vercel: 0.2.0-beta.1
   statsig-react: 1.27.0_react@18.2.0
 
@@ -1443,7 +1443,6 @@ packages:
 
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
-    dev: true
 
   /internal-slot/1.0.5:
     resolution: {integrity: sha512-Y+R5hJrzs52QCG2laLn4udYVnxsfny9CpOhNhUvk/SSSVyF6T27FzRbF0sroPidSu3X8oEAkOn2K804mjpt6UQ==}
@@ -2223,6 +2222,10 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /safe-buffer/5.2.1:
+    resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
+    dev: false
+
   /safe-regex-test/1.0.0:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}
     dependencies:
@@ -2249,6 +2252,14 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
+
+  /sha.js/2.4.11:
+    resolution: {integrity: sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ==}
+    hasBin: true
+    dependencies:
+      inherits: 2.0.4
+      safe-buffer: 5.2.1
+    dev: false
 
   /shebang-command/2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -2313,12 +2324,12 @@ packages:
       - encoding
     dev: false
 
-  /statsig-node/5.7.1:
-    resolution: {integrity: sha512-cyljxI6SAdeXI3J7fvDTH/d9BisUtFsQHxHpcVvv/ty8mr1L695cRPs9dywqB01Pz2c6AWHGHqoUTkrQkLZ5TA==}
+  /statsig-node/5.7.2-beta.0:
+    resolution: {integrity: sha512-doaw4bYsRo+JS1oj8g1UCXRGzbYgCCmP6r58BhoHEADlaUXXJDeft5IBzHsI+4gTRGT7Mb0P5a+1o74nga3EdQ==}
     dependencies:
       ip3country: 5.0.0
-      js-sha256: 0.9.0
       node-fetch: 2.6.9
+      sha.js: 2.4.11
       ua-parser-js: 1.0.35
       uuid: 8.3.2
     transitivePeerDependencies:

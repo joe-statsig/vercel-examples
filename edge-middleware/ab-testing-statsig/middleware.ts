@@ -27,6 +27,8 @@ export async function middleware(req: NextRequest, event: NextFetchEvent) {
   const experiment = await Statsig.getExperiment({ userID: userId }, EXPERIMENT)
   const bucket = experiment.get<string>('bucket', GROUP_PARAM_FALLBACK)
 
+  await Statsig.getClientInitializeResponse({ userID: 'userId' })
+
   // Clone the URL and change its pathname to point to a bucket
   const url = req.nextUrl.clone()
   url.pathname = `/${bucket}`
@@ -42,7 +44,7 @@ export async function middleware(req: NextRequest, event: NextFetchEvent) {
   }
 
   // Flush exposure logs to Statsig
-  event.waitUntil(Statsig.flush());
+  event.waitUntil(Statsig.flush())
 
   return res
 }
