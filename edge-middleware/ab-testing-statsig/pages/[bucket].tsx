@@ -62,7 +62,7 @@ function BucketPage({ bucket }: Props) {
           to pull Statsig configurations from the edge. As long as you have a
           bucket assigned you will always see the same result, otherwise you
           will be assigned a bucket to mantain the odds specified in the
-          experiment.
+          experiment. Note: this is branch: testing-waituntil
         </Text>
         <Text>
           Buckets are statically generated at build time in a{' '}
@@ -88,17 +88,17 @@ function BucketPage({ bucket }: Props) {
           Reset bucket
         </Button>
         <Text>
-          In order to set this demo up yourself, in the <Link href="https://console.statsig.com/" target="_blank">
+          In order to set this demo up yourself, in the{' '}
+          <Link href="https://console.statsig.com/" target="_blank">
             Statsig console
-          </Link>, create a new experiment called &quot;statsig_example&quot;. 
-          Create experiment groups, each with a &quot;bucket&quot; parameter. 
-          Make sure to start the experiment, and from there this example will display the bucket that the user was assigned to.
-          See the screenshot below for an example experiment setup.
+          </Link>
+          , create a new experiment called &quot;statsig_example&quot;. Create
+          experiment groups, each with a &quot;bucket&quot; parameter. Make sure
+          to start the experiment, and from there this example will display the
+          bucket that the user was assigned to. See the screenshot below for an
+          example experiment setup.
         </Text>
-        <Image
-          src={exampleScreenshot}
-          alt="Example Statsig Experiment Setup"
-        />
+        <Image src={exampleScreenshot} alt="Example Statsig Experiment Setup" />
       </section>
 
       <section className="flex flex-col gap-6">
